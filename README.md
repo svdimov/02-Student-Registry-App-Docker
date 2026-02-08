@@ -1,4 +1,4 @@
 run test
 testing docker compose 
 
-dont start jenkins
+forget schedule stars for 1 min  * * * * *
