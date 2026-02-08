@@ -9,16 +9,20 @@ pipeline{
             }
            
         }
-        stage("Run npm security"){
-             steps{
-                bat "npm audit fix"
+        stage(Testing){
+            parallel{
+                stage("Unit Testing"){
+                    steps{
+                        bat "npm audit"
+                    }
+                }
+                stage("Integration Testing"){
+                    steps{
+                        bat "npm run test"
+                    }
+                }
             }
         }
-        stage("Run tests"){
-             steps{
-                bat "npm test"
-            }
-        }
-    }
+       
 
-}
+}}
