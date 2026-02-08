@@ -9,14 +9,14 @@ pipeline{
             }
            
         }
-        stage(Testing){
+        stage("Testing"){
             parallel{
-                stage("Unit Testing"){
+                stage("Security Testing"){
                     steps{
                         bat "npm audit"
                     }
                 }
-                stage("Integration Testing"){
+                stage("Run uI Testing"){
                     steps{
                         bat "npm run test"
                     }
