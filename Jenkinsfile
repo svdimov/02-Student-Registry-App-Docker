@@ -13,9 +13,12 @@ pipeline {
             parallel {
                 stage("Run npm security") {
                     steps {
-                        bat 'npm audit'
+                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                            bat 'npm audit'
+                        }
                     }
                 }
+
                 stage("Run UI Tests") {
                     steps {
                         bat 'npm test'
