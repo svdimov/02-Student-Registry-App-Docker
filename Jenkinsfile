@@ -10,10 +10,12 @@ pipeline{
            
         }
         stage("Testing"){
+            failFast true
             parallel{
+                
                 stage("Security Testing"){
                     steps{
-                        bat "npm audit --audit-level=high"
+                        bat "npm audit fix"
                     }
                 }
                 stage("Run uI Testing"){
